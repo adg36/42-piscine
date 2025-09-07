@@ -8,8 +8,3 @@ void	ft_putstr(char *str)
 		str++;
 	}
 }
-
-int	main(void)
-{
-	ft_putstr("Hello");
-}
