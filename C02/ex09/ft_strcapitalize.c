@@ -11,8 +11,14 @@ char	*ft_strcapitalize(char *str)
 		if ((*s >= 'a' && *s <= 'z') || (*s >= 'A' && *s <= 'Z'))
 		{
 			if (is_first_letter && (*s >= 'a' && *s <= 'z'))
+			{
 				*s = *s - ('a' - 'A');
-			is_first_letter = 0;
+				is_first_letter = 0;
+			}
+			else if (!is_first_letter && (*s >= 'A' && *s <= 'Z'))
+			{	
+				*s = *s - ('a' - 'A');
+			}
 		}
 		else
 		{
@@ -21,4 +27,11 @@ char	*ft_strcapitalize(char *str)
 		s++;
 	}
 	return (str);
+}
+
+#include <stdio.h>
+int	main(void)
+{
+	char *string = "HELLO";
+	printf("%s\n", ft_strcapitalize(string));
 }
