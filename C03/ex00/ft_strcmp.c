@@ -5,10 +5,5 @@ int	ft_strcmp(char *s1, char *s2)
 		s1++;
 		s2++;
 	}
-	if (*s1 > *s2)
-		return (1);
-	else if (*s2 > *s1)
-		return (-1);
-	else
-		return (0);
+	return (*s1 - *s2);
 }
