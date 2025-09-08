@@ -1,31 +1,38 @@
-// #include <stdio.h>
-// #include <string.h>
+#include <stdio.h>
+#include <string.h>
 
 char	*ft_strstr(char *str, char *to_find)
 {
 	int	i;
 	int	j;
+	char	*found;
 
-	if (*to_find == '\0')
-		return (str);
 	i = 0;
+	j = 0;
 	while (str[i])
 	{
-		j = 0;
-		while (str[i + j] && to_find[j] && str[i + j] == to_find[j])
+		found = &str[i];
+		while (str[i] == to_find[j] && to_find[j] != '\0')
+		{
+			i++;
 			j++;
+		}
 		if (to_find[j] == '\0')
-			return (&str[i]);
-		i++;
+			return (found);
+		else if (str[i] != to_find[j] && to_find[j] != '\0')
+		{
+			j = 0;
+			i++;
+		}
 	}
 	return (NULL);
 }
-/*
+
 int	main(void)
 {
-	char myStr[] = "The rail in Spain falls mainly on the plains";
-	char *myPtr = ft_strstr(myStr, "ain");
-	char *theirPtr = strstr(myStr, "ain");
+	char myStr[] = "aaaaad";
+	char *myPtr = ft_strstr(myStr, "aad");
+	char *theirPtr = strstr(myStr, "aad");
 	if (myPtr != NULL)
 	{
 		printf("Mine:    %s\n", myPtr);
@@ -35,4 +42,4 @@ int	main(void)
 		printf("Expected: %s\n", theirPtr);
 	}
 	return 0;
-}*/
+}
