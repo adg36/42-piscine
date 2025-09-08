@@ -1,5 +1,5 @@
-#include <stdio.h>
-#include <string.h>
+// #include <stdio.h>
+// #include <string.h>
 
 char	*ft_strstr(char *str, char *to_find)
 {
@@ -27,7 +27,7 @@ char	*ft_strstr(char *str, char *to_find)
 	}
 	return (NULL);
 }
-
+/*
 int	main(void)
 {
 	char myStr[] = "aaaaad";
@@ -42,4 +42,4 @@ int	main(void)
 		printf("Expected: %s\n", theirPtr);
 	}
 	return 0;
-}
+}*/
