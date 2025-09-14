@@ -1,16 +1,8 @@
-// #include <stdio.h>
-
 int	ft_strlen(char *str);
 int	is_valid_base(char *base, int base_len);
 int	is_valid_char(char c, char *base);
 int	get_index(char c, char *base);
-int	ft_atoi_base(char *str, char *base);
 
-/*
-int	main(void)
-{
-	printf("%i\n", ft_atoi_base("-12A4", "0123456789ABCDEF"));
-}*/
 int	ft_atoi_base(char *str, char *base)
 {
 	int	n;
