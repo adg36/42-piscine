@@ -8,16 +8,18 @@ char	*ft_strcapitalize(char *str)
 
 	while (*s)
 	{
-		if ((*s >= 'a' && *s <= 'z') || (*s >= 'A' && *s <= 'Z'))
+		if ((*s >= 'a' && *s <= 'z') || (*s >= 'A' && *s <= 'Z') || (*s >= '0' && *s <= '9'))
 		{
 			if (is_first_letter && (*s >= 'a' && *s <= 'z'))
 			{
 				*s = *s - ('a' - 'A');
 				is_first_letter = 0;
 			}
+			else if (is_first_letter && (*s < 'a' || *s > 'z'))
+				is_first_letter = 0;
 			else if (!is_first_letter && (*s >= 'A' && *s <= 'Z'))
 			{	
-				*s = *s - ('a' - 'A');
+				*s = *s + ('a' - 'A');
 			}
 		}
 		else
@@ -27,11 +29,4 @@ char	*ft_strcapitalize(char *str)
 		s++;
 	}
 	return (str);
-}
-
-#include <stdio.h>
-int	main(void)
-{
-	char *string = "HELLO";
-	printf("%s\n", ft_strcapitalize(string));
 }
