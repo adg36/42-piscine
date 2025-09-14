@@ -1,16 +1,17 @@
 #include <unistd.h>
 
 int	ft_strlen(char *str);
-int	is_valid_base(char *base);
+int	is_valid_base(char *base, int base_len);
+void	putnbr_recursive(long n, char *base, int base_len);
 
 void	ft_putnbr_base(int nbr, char *base)
 {
 	long	n;
-	char	c;
 	int	base_len;
+	char	c;
 
 	base_len = ft_strlen(base);
-	if (!is_valid_base(base))
+	if (!is_valid_base(base, base_len))
 		return;
 	n = nbr;
 	if (n < 0)
@@ -19,7 +20,7 @@ void	ft_putnbr_base(int nbr, char *base)
 		n = -n;
 	}
 	if (n >= base_len)
-		ft_putnbr_base(n / base_len, base);
+		putnbr_recursive(n / base_len, base, base_len);
 	c = base[n % base_len];
 	write(1, &c, 1);
 }
@@ -34,13 +35,11 @@ int	ft_strlen(char *str)
 	return (i);
 }
 
-int	is_valid_base(char *base)
+int	is_valid_base(char *base, int base_len)
 {
 	int	i;
 	int	j;
-	int	base_len;
 
-	base_len = ft_strlen(base);
 	if (base_len == 0 || base_len == 1)
 		return (0);
 	i = 0;
@@ -58,4 +57,14 @@ int	is_valid_base(char *base)
 		i++;
 	}
 	return (1);
+}
+
+void	putnbr_recursive(long n, char *base, int base_len)
+{
+	char	c;
+
+	if (n >= base_len)
+		putnbr_recursive(n / base_len, base, base_len);
+	c = base[n % base_len];
+	write(1, &c, 1);
 }
