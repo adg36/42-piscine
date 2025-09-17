@@ -13,9 +13,11 @@ char	*ft_strjoin(int size, char **strs, char *sep)
 	int	total_len;
 
 	if (size == 0)
+	{
 		final_str = malloc(1);
-	if (!final_str)
-		return (NULL);
+		if (!final_str)
+			return (NULL);
+	}
 	sep_len = ft_strlen(sep);
 	total_len = 0;
 	i = 0;
