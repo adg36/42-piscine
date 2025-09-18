@@ -10,7 +10,7 @@ char	*ft_convert_base(char *nbr, char *base_from, char *base_to)
 	int	len_base_from;
 	int	len_base_to;
 	int	converted_nbr;
-	int	i;
+	int	count;
 	char	*result;
 
 	len_base_from = ft_strlen(base_from);
@@ -18,17 +18,25 @@ char	*ft_convert_base(char *nbr, char *base_from, char *base_to)
 	if (!is_valid_base(base_from, len_base_from) || !is_valid_base(base_to, len_base_to))
 		return (NULL);
 	converted_nbr = ft_atoi_base(nbr, base_from);
+	count = count_digits(converted_nbr, len_base_to);
 	if (converted_nbr < 0)
-		result = malloc(count_digits(converted_nbr, len_base_to) + 2);
+	{
+		result = malloc(count + 2);
+		result[0] = '-';
+		converted_nbr = -converted_nbr;
+	}
 	else
-		result = malloc(count_digits(converted_nbr, len_base_to) + 1);
+	{
+		result = malloc(count + 1);
+		count -= 1;
+	}
 	if (!result)
 		return (NULL);
-	i = 0;
-	while (converted_nbr > 0)
+	result[count + 1] = '\0';
+	while (converted_nbr != 0)
 	{
-		result[i] = base_to[converted_nbr % len_base_to];
-		i++;
+		result[count] = base_to[converted_nbr % len_base_to];
+		count--;
 		converted_nbr /= len_base_to;
 	}
 	return (result);
@@ -38,7 +46,9 @@ int	count_digits(int n, int base_len)
 {
 	int	count;
 
-	count = 0;
+	count = 1;
+	if (n < 0)
+		n = -n;
 	while (n >= base_len)
 	{
 		n /= base_len;
