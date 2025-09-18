@@ -8,8 +8,10 @@ int	ft_atoi_base(char *str, char *base)
 	int	n;
 	int	minus;
 	int	base_len;
-
+	
 	base_len = ft_strlen(base);
+	if (!is_valid_base(base, base_len))
+		return (0);
 	n = 0;
 	minus = 0;
 	while (*str == ' ' || (*str >= 9 && *str <= 13))
