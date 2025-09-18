@@ -2,12 +2,15 @@
 
 int	ft_atoi_base(char *str, char *base);
 int	count_digits(int n, int base_len);
+int     ft_strlen(char *str);
+int     is_valid_base(char *base, int base_len);
 
 char	*ft_convert_base(char *nbr, char *base_from, char *base_to)
 {
 	int	len_base_from;
 	int	len_base_to;
 	int	converted_nbr;
+	int	i;
 	char	*result;
 
 	len_base_from = ft_strlen(base_from);
@@ -21,7 +24,14 @@ char	*ft_convert_base(char *nbr, char *base_from, char *base_to)
 		result = malloc(count_digits(converted_nbr, len_base_to) + 1);
 	if (!result)
 		return (NULL);
-
+	i = 0;
+	while (converted_nbr > 0)
+	{
+		result[i] = base_to[converted_nbr % len_base_to];
+		i++;
+		converted_nbr /= len_base_to;
+	}
+	return (result);
 }
 
 int	count_digits(int n, int base_len)
