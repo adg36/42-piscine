@@ -100,3 +100,4 @@ int	get_index(char c, char *base)
 	}
 	return (i);
 }
+
