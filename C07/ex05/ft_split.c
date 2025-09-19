@@ -6,9 +6,9 @@ int		ft_count_words(char *str, char *sep);
 
 char	**ft_split(char *str, char *charset)
 {
-	int	i;
-	int	new_word;
-	int	word;
+	int		i;
+	int		new_word;
+	int		word;
 	char	**words;
 
 	words = (char **)malloc((ft_count_words(str, charset) + 1) * sizeof(char *));
@@ -64,7 +64,7 @@ int	ft_count_words(char *str, char *sep)
 char	*ft_strcpy(char *str, int start, int end)
 {
 	char	*words;
-	int	i;
+	int		i;
 
 	words = (char *)malloc((end - start + 1) * sizeof(char));
 	i = 0;
