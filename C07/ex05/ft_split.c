@@ -1,8 +1,8 @@
 #include <stdio.h>
 
-int	is_sep(char *str, char c);
+int		is_sep(char *str, char c);
 char	*ft_strcpy(char *str, int start, int end);
-int	ft_count_words(char *str, char *sep);
+int		ft_count_words(char *str, char *sep);
 
 char	**ft_split(char *str, char *charset)
 {
