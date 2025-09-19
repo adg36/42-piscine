@@ -14,8 +14,4 @@ typedef enum t_bool
 	TRUE = 1,
 } t_bool;
 
-void	ft_putstr(char *str);
-t_bool	ft_is_even(int nbr);
-int	main(int argc, char **argv);
-
 #endif
