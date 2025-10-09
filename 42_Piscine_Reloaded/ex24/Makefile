@@ -19,13 +19,12 @@ CC = cc
 CFLAGS = -Wall -Wextra -Werror
 
 SRC = ft_putchar.c ft_putstr.c ft_strcmp.c ft_strlen.c ft_swap.c
-
 OBJ = $(addprefix $(SRC_DIR)/, $(SRC:.c=.o))
 
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	ar rcs $(NAME) $(OBJ)
+	ar rcs $@ $^
 
 $(SRC_DIR)/%.o : $(SRC_DIR)/%.c
 	$(CC) $(CFLAGS) -I $(INC_DIR) -c $< -o $@
@@ -33,7 +32,7 @@ $(SRC_DIR)/%.o : $(SRC_DIR)/%.c
 clean:
 	rm -f $(OBJ)
 
-fclean:
+fclean: clean
 	rm -f $(NAME)
 
 re: fclean all
