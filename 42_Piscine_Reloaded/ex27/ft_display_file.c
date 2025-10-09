@@ -12,6 +12,7 @@
 
 #include <unistd.h>
 #include <fcntl.h>
+#include <stdio.h>
 
 void	ft_putstr(char *str);
 
@@ -19,7 +20,6 @@ int	main(int argc, char **argv)
 {
 	char	buffer[1024];
 	ssize_t	bytes_read;
-	ssize_t	bytes_written;
 	int		file;
 	int		i;
 
@@ -30,10 +30,16 @@ int	main(int argc, char **argv)
 	else
 	{
 		file = open(argv[1], O_RDONLY);
-		if (file == -1)
+		if (file < 0)
 			ft_putstr("Cannot read file.\n");
 		bytes_read = read(file, buffer, 1024);
-		write(file, buffer, 1024);
+		i = 0;
+		while (bytes_read > 0)
+		{
+			write(1, &buffer[i], 1);
+			i++;
+			bytes_read--;
+		}
 		close(file);
 	}
 	return (0);
